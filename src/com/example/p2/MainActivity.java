@@ -33,13 +33,13 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		this.carreras = (RadioGroup) findViewById(R.id.radioGroupCarreras);
-		nombre = (EditText)findViewById(R.id.editText1);
-		btnAceptar = (Button)findViewById(R.id.buttonAceptar);
-		txtResultado = (TextView)findViewById(R.id.txtResultado);
-		checkC = (CheckBox)findViewById(R.id.checkBoxC);
-		checkJava = (CheckBox)findViewById(R.id.checkBoxJava);
-		checkCSharp = (CheckBox)findViewById(R.id.CheckBoxCSharp);
+		carreras 	= (RadioGroup) findViewById(R.id.radioGroup1);
+		nombre 			= (EditText)findViewById(R.id.editText1);
+		btnAceptar 		= (Button)findViewById(R.id.buttonAceptar);
+		txtResultado 	= (TextView)findViewById(R.id.txtResultado);
+		checkC 			= (CheckBox)findViewById(R.id.checkBoxC);
+		checkJava 		= (CheckBox)findViewById(R.id.checkBoxJava);
+		checkCSharp 	= (CheckBox)findViewById(R.id.CheckBoxCSharp);
 		
 		btnAceptar.setOnClickListener(new OnClickListener(){
 			@Override
@@ -49,6 +49,23 @@ public class MainActivity extends Activity {
 				int seleccionada = carreras.getCheckedRadioButtonId();
 				carreraSeleccionada = (RadioButton)findViewById(seleccionada);
 				
+				String mensaje = usuario + " es alumno de la carrera de ";
+				mensaje += carreraSeleccionada.getText();
+				mensaje += ". Y sé programar en los siguiente lenguajes:\n";
+				
+				if(checkC.isChecked()){
+					mensaje += checkC.getText() + "\n";
+				}
+				
+				if(checkJava.isChecked()){
+					mensaje += checkJava.getText() + "\n";
+				}
+				
+				if(checkCSharp.isChecked()){
+					mensaje += checkCSharp.getText() + "\n";
+				}
+				
+				txtResultado.setText(mensaje);
 				
 			}
 		});
